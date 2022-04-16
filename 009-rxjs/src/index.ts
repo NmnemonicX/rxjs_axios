@@ -1,9 +1,20 @@
-import {of, from, timer, range} from 'rxjs';
+import {of, from, timer, range, Observable} from 'rxjs';
+const axios = require('axios');
+import { HttpService } from '@nestjs/axios';
+import {map} from "rxjs/operators";
+import Axios from  'axios-observable';
+import Axios2 from  'axios-observable';
 
-const o = range(0, 10)
 
-o.subscribe({
-  next: (value: any) => console.log('Next:', value),
-  complete: () => console.log('Complete!'),
-  error: (error) => console.log('Error!', error)
-})
+
+Axios.get('https://api.github.com/zen')
+    .subscribe(
+        response => console.log(response.data),
+     //   error => console.log(error)
+    );
+
+Axios2.get('http://numbersapi.com/random/year')
+    .subscribe(
+        response => console.log(response.data),
+        //   error => console.log(error)
+    );
